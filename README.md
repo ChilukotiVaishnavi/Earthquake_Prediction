@@ -1,17 +1,28 @@
 # 🌍 Earthquake Prediction Using Machine Learning 🌍
 
-A web-based earthquake prediction system that uses **Machine Learning** to estimate earthquake intensity based on **latitude, longitude, and height**. Built using **Flask, Scikit-learn, and Random Forest Classifier**.
+A web-based earthquake prediction system that uses **Machine Learning** to estimate earthquake intensity based on **latitude, longitude, and height**. Built using **Flask, Scikit-learn,Xgboost,AdaBoostClassifier,LinearRegression,SVM and Random Forest Classifier**.
 
 ## 📌 Features
-✅ Predicts earthquake intensity using **ML model**  
-✅ User-friendly **web interface** with Flask  
-✅ Uses **Random Forest Classifier** for accurate predictions  
-✅ Displays **risk levels** based on the predicted magnitude  
+✅ Predicts earthquake intensity (Richter scale) using machine learning models
+✅ User-friendly web interface built with Flask and HTML/CSS
+✅ Utilizes multiple models:
+  ✔️ Random Forest Classifier
+  ✔️ AdaBoost Classifier
+  ✔️ Support Vector Machine (SVM)
+  ✔️ XGBoost Classifier & Regressor
+  ✔️ Linear Regression
+✅ Shows output from the most accurate model (XGBoost Regressor)
+✅ Dynamically maps predicted values to risk levels
+✅ Validates and accepts both integers and floats as inputs
+✅ Automatically handles invalid inputs gracefully
+✅ Provides interactive messages with risk interpretation
+✅ Clean, mobile-friendly UI with alert messages and tooltips
+✅ Fully functional backend for future model comparison or selection
 
 ## 🛠️ Tech Stack
 - 🔹 **Frontend:** HTML, CSS  
 - 🔹 **Backend:** Flask (Python)  
-- 🔹 **Machine Learning:** Scikit-learn (RandomForestClassifier)  
+- 🔹 **Machine Learning:** Random Forest Classifier & Regressor,AdaBoost Classifier,Support Vector Machine (SVM),XGBoost Classifier & Regressor,Linear Regression
 - 🔹 **Data Handling:** NumPy, Pandas  
 - 🔹 **Deployment:** Flask Server
 
@@ -24,10 +35,12 @@ A web-based earthquake prediction system that uses **Machine Learning** to estim
 - py -m pip
 - python.exe -m pip install --upgrade pip
 - pip install -r requirements.txt
-- pip install flask,numpy,pandas,scikit-learn,joblib
-4️⃣ Run the Flask application
+- pip install flask,numpy,pandas,scikit-learn,joblib,xgboost 
+4️⃣ Run the Detector to download pkl files
+-python detector.py
+5️⃣ Run the Flask application
 -python app.py
-5️⃣ Open your browser and visit http://127.0.0.1:5000 or follow the link in terminal
+6️⃣ Open your browser and visit http://127.0.0.1:5000 or follow the link in terminal
 
 ## ✨ Output
 ![Image](https://github.com/user-attachments/assets/53722ac3-0486-469a-ae51-c8fa944ff4ae)
