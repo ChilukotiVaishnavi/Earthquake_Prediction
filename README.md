@@ -3,21 +3,16 @@
 A web-based earthquake prediction system that uses **Machine Learning** to estimate earthquake intensity based on **latitude, longitude, and height**. Built using **Flask, Scikit-learn,Xgboost,AdaBoostClassifier,LinearRegression,SVM and Random Forest Classifier**.
 
 ## 📌 Features
-✅ Predicts earthquake intensity (Richter scale) using machine learning models
-✅ User-friendly web interface built with Flask and HTML/CSS
-✅ Utilizes multiple models:
-  ✔️ Random Forest Classifier
-  ✔️ AdaBoost Classifier
-  ✔️ Support Vector Machine (SVM)
-  ✔️ XGBoost Classifier & Regressor
-  ✔️ Linear Regression
-✅ Shows output from the most accurate model (XGBoost Regressor)
-✅ Dynamically maps predicted values to risk levels
-✅ Validates and accepts both integers and floats as inputs
-✅ Automatically handles invalid inputs gracefully
-✅ Provides interactive messages with risk interpretation
-✅ Clean, mobile-friendly UI with alert messages and tooltips
-✅ Fully functional backend for future model comparison or selection
+-✅ Predicts earthquake intensity (Richter scale) using machine learning models
+-✅ User-friendly web interface built with Flask and HTML/CSS
+-✅ Utilizes multiple models:Random Forest Classifier,AdaBoost Classifier,Support Vector Machine (SVM),XGBoost Classifier & Regressor,Linear Regression
+-✅ Shows output from the most accurate model (XGBoost Regressor)
+-✅ Dynamically maps predicted values to risk levels
+-✅ Validates and accepts both integers and floats as inputs
+-✅ Automatically handles invalid inputs gracefully
+-✅ Provides interactive messages with risk interpretation
+-✅ Clean, mobile-friendly UI with alert messages and tooltips
+-✅ Fully functional backend for future model comparison or selection
 
 ## 🛠️ Tech Stack
 - 🔹 **Frontend:** HTML, CSS  
@@ -43,6 +38,6 @@ A web-based earthquake prediction system that uses **Machine Learning** to estim
 6️⃣ Open your browser and visit http://127.0.0.1:5000 or follow the link in terminal
 
 ## ✨ Output
-![Image](https://github.com/user-attachments/assets/53722ac3-0486-469a-ae51-c8fa944ff4ae)
-![Image](https://github.com/user-attachments/assets/a076381a-f2de-47bb-ac80-6437a4355cea)
+![Image](https://github.com/user-attachments/assets/3d8bde0d-046f-4ee4-b071-b0c52fc00fd1)
+![Image](https://github.com/user-attachments/assets/e4911858-56ed-45d1-b351-33417811707a)
 
