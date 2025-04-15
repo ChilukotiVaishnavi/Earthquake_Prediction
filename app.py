@@ -1,78 +1,56 @@
-from flask import Flask,request, url_for, redirect, render_template
-import pickle
-import joblib
-import detector
+from flask import Flask, request, render_template
 import numpy as np
+import joblib
 
 app = Flask(__name__)
 
-model=joblib.load(open('model.pkl','rb'))
+# Load all models
+model_rf = joblib.load(open('random_forest_model.pkl', 'rb'))
+model_ada = joblib.load(open('adaboost_model.pkl', 'rb'))
+model_svm = joblib.load(open('svm_model.pkl', 'rb'))
+model_xgb = joblib.load(open('xgboost_model.pkl', 'rb'))
+model_lin = joblib.load(open('linear_regression_model.pkl', 'rb'))
+model_xgb_reg = joblib.load(open('xgboost_reg_model.pkl', 'rb'))  # Most accurate assumed
 
+@app.route('/')
 def home():
     return render_template('homepage.html')
 
-
-
-@app.route('/')
-def home2():
-    return render_template('homepage.html')
-
-
-# @app.route('/error')
-# def error():
-#     return render_template('error.html')
-
-
-# @app.route('/aboutproject')
-# def aboutproject():
-#     return render_template('aboutproject.html')
-
-
-
-# @app.route('/review')
-# def review():
-#     return render_template('review.html')
-
-
-# @app.route('/sourcecode')
-# def sourcecode():
-#     return render_template('sourcecode.html')
-
-# @app.route('/creator')
-# def creator():
-#     return render_template('creator.html')
-
-
-
-
-
-@app.route('/prediction', methods=['POST', 'GET'])
+@app.route('/prediction', methods=['POST'])
 def prediction():
-    data1 = float(request.form['a'])
-    data2 = float(request.form['b'])
-    data3 = float(request.form['c'])
-    
-    arr = np.array([[data1, data2, data3]])
-    output = model.predict(arr).item()  # Convert NumPy type to standard Python int
+    try:
+        # Collect and convert input
+        data1 = float(request.form['a'])  # Latitude
+        data2 = float(request.form['b'])  # Longitude
+        data3 = float(request.form['c'])  # Height
 
-    if output < 4:
-        return render_template('prediction.html', p=str(output), q='No')
-    elif 4 <= output < 6:
-        return render_template('prediction.html', p=str(output), q='Low')
-    elif 6 <= output < 8:
-        return render_template('prediction.html', p=str(output), q='Moderate')
-    elif 8 <= output < 9:
-        return render_template('prediction.html', p=str(output), q='High')
-    elif output >= 9:
-        return render_template('prediction.html', p=str(output), q='Very High')
-    else:
-        return render_template('prediction.html', p='N.A.', q='Undefined')
-    
+        arr = np.array([[data1, data2, data3]])
+
+        # Predict using the most accurate model (XGBoost Regressor)
+        pred = model_xgb_reg.predict(arr).item()
+        pred_rounded = round(pred, 2)
+
+        # Risk level calculation
+        def get_risk(val):
+            if val < 4:
+                return 'No'
+            elif val < 6:
+                return 'Low'
+            elif val < 8:
+                return 'Moderate'
+            elif val < 9:
+                return 'High'
+            else:
+                return 'Very High'
+
+        risk = get_risk(pred)
+
+        # Return output using the template
+        return render_template('prediction.html', p=pred_rounded, q=risk)
+
+    except Exception as e:
+        # Handle any errors and still render template
+        return render_template('prediction.html', p="Invalid Input", q="Please enter even floats.")
+
 if __name__ == "__main__":
     app.run(debug=True)
-
-
-
-
-
-
